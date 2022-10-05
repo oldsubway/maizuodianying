@@ -1,0 +1,23 @@
+{
+  "id": "3671101",
+  "name": "卖座电影图标库",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3103169",
+      "name": "电影",
+      "font_class": "dianying",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "8922379",
+      "name": "电影院",
+      "font_class": "dianyingyuan",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    }
+  ]
+}
