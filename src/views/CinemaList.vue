@@ -61,7 +61,6 @@ export default {
       const { data: res } = await getCinemaList()
       if (res.status === 0) {
         this.$toast.clear()
-        console.log(res.data.cinemas)
         this.cinemaList = [...this.cinemaList, ...res.data.cinemas]
         this.cinemaData = [...this.cinemaData, ...res.data.cinemas]
       }
@@ -76,7 +75,7 @@ export default {
     changeItem(item, index) {
       this.value1 = item.fullname
       this.active = index
-      this.cinemaList = this.cinemaData.filter(i => i.districtName.includes(item.fullname))
+      this.cinemaList = item.fullname === '全城' ? this.cinemaData : this.cinemaData.filter(i => i.districtName.includes(item.fullname))
       this.$refs.city.toggle()
     },
 
