@@ -13,7 +13,7 @@
       <van-dropdown-item v-model="value3" :options="option3" />
     </van-dropdown-menu>
     <van-list class="contain">
-      <cinema-item v-for="(item, index) in cinemas" :key="index" :cinema="item"></cinema-item>
+      <cinema-item v-for="(item, index) in cinemaList" :key="index" :cinema="item"></cinema-item>
     </van-list>
     <router-view></router-view>
   </div>
@@ -29,7 +29,8 @@ export default {
   },
   data() {
     return {
-      cinemas: [],
+      cinemaList: [],
+      cinemaData: [],
       loading: false,
       finished: false,
       isLoading: false,
@@ -60,7 +61,9 @@ export default {
       const { data: res } = await getCinemaList()
       if (res.status === 0) {
         this.$toast.clear()
-        this.cinemas = [...this.cinemas, ...res.data.cinemas]
+        console.log(res.data.cinemas)
+        this.cinemaList = [...this.cinemaList, ...res.data.cinemas]
+        this.cinemaData = [...this.cinemaData, ...res.data.cinemas]
       }
     },
     async initDistrictList() {
@@ -71,9 +74,9 @@ export default {
     },
 
     changeItem(item, index) {
-      console.log(item)
       this.value1 = item.fullname
       this.active = index
+      this.cinemaList = this.cinemaData.filter(i => i.districtName.includes(item.fullname))
       this.$refs.city.toggle()
     },
 
